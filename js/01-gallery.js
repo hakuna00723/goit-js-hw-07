@@ -20,7 +20,6 @@ gallery.addEventListener("click", (event) => {
   event.preventDefault();
 
   // Check if this is a picture👀
-
   if (event.target.nodeName !== "IMG") {
     return;
   }
@@ -29,6 +28,11 @@ gallery.addEventListener("click", (event) => {
   const imgCreated = basicLightbox.create(`<img src = "${imgOriginal}"/>`);
 
   imgCreated.show();
+
+  //close with Esc
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") imgCreated.close();
+  });
 });
 
 console.log(galleryItems);
